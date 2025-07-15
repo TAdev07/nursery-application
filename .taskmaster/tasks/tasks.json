@@ -1,0 +1,405 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Thiết lập môi trường phát triển và cấu hình dự án",
+        "description": "Tạo dự án Next.js 15 với TypeScript, Tailwind CSS và các công cụ phát triển hiện đại",
+        "details": "Khởi tạo dự án Next.js 15 với App Router, cấu hình TypeScript, Tailwind CSS 4.0, ESLint, Prettier. Thiết lập VSCode workspace với các extension cần thiết (TypeScript, Tailwind CSS, ESLint). Cấu hình package.json với các scripts phát triển, build và test. Thiết lập Git repository với conventional commits và pre-commit hooks. Tạo cấu trúc thư mục theo App Router pattern với các folder: app/, components/, lib/, types/, utils/. Cấu hình next.config.js với optimization cho production.",
+        "testStrategy": "Kiểm tra dự án có thể chạy thành công với npm run dev, TypeScript compilation không có lỗi, Tailwind CSS hoạt động đúng, ESLint và Prettier cấu hình chính xác. Verify hot reload và debugging tools hoạt động.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Khởi tạo Next.js 15 project với App Router",
+            "description": "Tạo dự án Next.js 15 mới với App Router và cấu hình cơ bản",
+            "dependencies": [],
+            "details": "Sử dụng npx create-next-app@latest để tạo dự án với Next.js 15, chọn App Router, TypeScript, ESLint. Cấu hình package.json với scripts cần thiết (dev, build, start, lint). Kiểm tra dự án có thể chạy thành công với npm run dev.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Cấu hình TypeScript và Tailwind CSS 4.0",
+            "description": "Thiết lập TypeScript strict mode và cài đặt Tailwind CSS 4.0",
+            "dependencies": [1],
+            "details": "Cấu hình tsconfig.json với strict mode, path mapping và type checking. Cài đặt và cấu hình Tailwind CSS 4.0 với tailwind.config.js, thiết lập CSS imports trong globals.css. Tạo custom utilities và components classes cần thiết.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Thiết lập development tools (ESLint, Prettier)",
+            "description": "Cấu hình ESLint và Prettier cho code quality và formatting",
+            "dependencies": [2],
+            "details": "Cấu hình .eslintrc.json với Next.js và TypeScript rules. Thiết lập .prettierrc và .prettierignore. Tạo VSCode workspace settings với extensions: TypeScript, Tailwind CSS, ESLint, Prettier. Cấu hình format on save và linting rules.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Cấu hình Git và pre-commit hooks",
+            "description": "Thiết lập Git repository với conventional commits và pre-commit validation",
+            "dependencies": [3],
+            "details": "Khởi tạo Git repository với .gitignore cho Next.js. Cài đặt husky và lint-staged cho pre-commit hooks. Cấu hình commitlint cho conventional commits. Thiết lập pre-commit hooks để chạy TypeScript check, ESLint và Prettier trước mỗi commit.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Tạo cấu trúc thư mục theo App Router pattern",
+            "description": "Tổ chức cấu trúc thư mục chuẩn với các folder cần thiết",
+            "dependencies": [4],
+            "details": "Tạo cấu trúc thư mục: app/ (routes), components/ (UI components), lib/ (utilities), types/ (TypeScript types), utils/ (helper functions), hooks/ (custom hooks), styles/ (CSS), public/ (static assets). Tạo barrel exports (index.ts) cho từng folder.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Tối ưu next.config.js cho production",
+            "description": "Cấu hình next.config.js với optimization settings cho performance",
+            "dependencies": [5],
+            "details": "Cấu hình next.config.js với image optimization, bundle analyzer, compression settings. Thiết lập environment variables structure. Cấu hình TypeScript và ESLint integration. Tối ưu build output và runtime performance settings.",
+            "status": "done",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Thiết lập và cấu hình Supabase",
+        "description": "Tạo Supabase project và cấu hình kết nối với Next.js application",
+        "details": "Tạo Supabase project mới với PostgreSQL database. Cấu hình environment variables (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY). Cài đặt @supabase/supabase-js và @supabase/auth-helpers-nextjs. Tạo lib/supabase.ts với client configuration cho server và client side. Cấu hình middleware.ts để xử lý authentication. Thiết lập Supabase CLI để sync schema và migrations.",
+        "testStrategy": "Kiểm tra kết nối Supabase thành công, có thể truy cập database từ Next.js app, authentication helpers hoạt động đúng. Test basic CRUD operations với Supabase client.",
+        "priority": "high",
+        "dependencies": [1],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Tạo Supabase project và cấu hình credentials",
+            "description": "Khởi tạo Supabase project mới với PostgreSQL database và thiết lập các credentials cần thiết",
+            "dependencies": [],
+            "details": "Đăng ký/đăng nhập Supabase dashboard, tạo project mới với region phù hợp. Thiết lập PostgreSQL database với basic configuration. Lấy project URL và anon key từ Settings > API. Tạo service role key cho server-side operations. Cấu hình RLS (Row Level Security) policies cơ bản.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Cài đặt và cấu hình Supabase packages",
+            "description": "Cài đặt các package Supabase cần thiết và cấu hình dependencies",
+            "dependencies": [1],
+            "details": "Cài đặt @supabase/supabase-js, @supabase/auth-helpers-nextjs, @supabase/auth-helpers-react. Cập nhật package.json với các dependencies version tương thích với Next.js 15. Cấu hình TypeScript types cho Supabase client. Thiết lập import paths và module resolution.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Thiết lập client configuration",
+            "description": "Tạo Supabase client configuration cho server và client side",
+            "dependencies": [2],
+            "details": "Tạo lib/supabase.ts với createClient cho client-side operations. Tạo lib/supabase-server.ts cho server-side operations với service role. Cấu hình environment variables: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY. Thiết lập TypeScript interfaces cho database schema.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Cấu hình authentication middleware",
+            "description": "Thiết lập middleware.ts để xử lý authentication và route protection",
+            "dependencies": [3],
+            "details": "Tạo middleware.ts trong root directory với auth helpers. Cấu hình route protection cho protected pages. Thiết lập token refresh mechanism. Xử lý redirect logic cho authenticated/unauthenticated users. Cấu hình matcher patterns cho middleware.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Setup Supabase CLI và testing connections",
+            "description": "Cài đặt Supabase CLI và kiểm tra kết nối database",
+            "dependencies": [4],
+            "details": "Cài đặt Supabase CLI globally hoặc trong project. Cấu hình supabase init và link với remote project. Tạo migration files cơ bản. Test kết nối database với basic CRUD operations. Verify authentication helpers hoạt động đúng với test user. Kiểm tra environment variables được load correctly.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Thiết kế và triển khai database schema",
+        "description": "Tạo 31 tables với relationships, indexes và constraints cho hệ thống quản lý vườn ươm",
+        "details": "Tạo migration files cho 31 bảng chính: profiles, company_profiles, roles, user_roles, categories, products, product_variants, inventory_locations, inventory_stock, orders, order_items và các bảng hỗ trợ khác. Thiết lập foreign key constraints và indexes để tối ưu performance. Tạo JSONB columns cho plant-specific attributes. Thiết lập hierarchical categories với parent-child relationships. Tạo triggers cho automated business logic như inventory updates và order calculations. Sử dụng Supabase migrations để version control schema changes.",
+        "testStrategy": "Kiểm tra tất cả tables được tạo thành công, foreign key constraints hoạt động đúng, indexes cải thiện query performance. Test hierarchical categories và JSONB operations. Verify triggers thực thi đúng business logic.",
+        "priority": "high",
+        "dependencies": [2],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Tạo migration files cho core tables",
+            "description": "Tạo migration files cho các bảng cốt lõi: profiles, company_profiles, roles, user_roles",
+            "dependencies": [],
+            "details": "Thiết lập các bảng cơ bản cho hệ thống người dùng và vai trò. Bao gồm: profiles table cho thông tin cá nhân, company_profiles cho thông tin công ty, roles table cho các vai trò hệ thống, user_roles table cho mapping user và role. Thiết lập foreign key constraints và indexes cần thiết.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Tạo migration files cho product catalog tables",
+            "description": "Tạo migration files cho hệ thống danh mục sản phẩm: categories, products, product_variants",
+            "dependencies": [1],
+            "details": "Thiết lập tables cho danh mục sản phẩm với hierarchical categories (parent-child relationships), products table với JSONB columns cho plant-specific attributes, product_variants table cho các biến thể sản phẩm. Thiết lập indexes để tối ưu query performance.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Tạo migration files cho inventory management tables",
+            "description": "Tạo migration files cho quản lý kho: inventory_locations, inventory_stock",
+            "dependencies": [2],
+            "details": "Thiết lập inventory_locations table cho các vị trí kho, inventory_stock table để tracking số lượng tồn kho theo từng sản phẩm và vị trí. Thiết lập foreign key constraints liên kết với product tables và constraints để đảm bảo data integrity.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Tạo migration files cho order system tables",
+            "description": "Tạo migration files cho hệ thống đơn hàng: orders, order_items",
+            "dependencies": [3],
+            "details": "Thiết lập orders table cho thông tin đơn hàng, order_items table cho chi tiết sản phẩm trong đơn hàng. Thiết lập foreign key constraints liên kết với user profiles và product tables. Thêm indexes để tối ưu query performance cho việc tra cứu đơn hàng.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Tạo migration files cho supporting tables",
+            "description": "Tạo migration files cho các bảng hỗ trợ khác: notifications, audit_logs, settings",
+            "dependencies": [4],
+            "details": "Thiết lập các bảng hỗ trợ như notifications cho thông báo hệ thống, audit_logs cho tracking các thay đổi, settings cho cấu hình hệ thống. Thiết lập foreign key constraints và indexes phù hợp.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Thiết lập database indexes và constraints",
+            "description": "Tạo indexes và constraints cho tất cả tables để tối ưu performance",
+            "dependencies": [5],
+            "details": "Thiết lập composite indexes cho các query thường dùng, unique constraints cho các fields cần thiết, check constraints cho data validation. Tạo indexes cho JSONB columns và text search. Optimize indexes cho hierarchical categories queries.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Tạo database triggers cho business logic",
+            "description": "Thiết lập triggers cho automated business logic như inventory updates và order calculations",
+            "dependencies": [6],
+            "details": "Tạo triggers cho tự động cập nhật inventory khi có order mới, triggers cho tính toán tổng tiền đơn hàng, triggers cho audit logging. Thiết lập triggers cho cập nhật timestamps và data validation. Test triggers hoạt động đúng với business rules.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Chạy migrations và verify database schema",
+            "description": "Thực thi tất cả migration files và kiểm tra database schema hoạt động đúng",
+            "dependencies": [7],
+            "details": "Chạy tất cả migration files theo đúng thứ tự, verify tất cả tables được tạo thành công, foreign key constraints hoạt động đúng. Test hierarchical categories queries, JSONB operations, và trigger functionality. Kiểm tra indexes cải thiện query performance.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Triển khai Row Level Security (RLS) policies",
+        "description": "Thiết lập RLS policies cho tất cả tables để bảo vệ dữ liệu theo vai trò người dùng",
+        "details": "Tạo RLS policies cho 7 roles: Super Admin, Nursery Manager, Sales Staff, Nursery Worker, Wholesale Customer, Retail Customer, Content Editor. Định nghĩa permission matrix cho từng role với các operations: SELECT, INSERT, UPDATE, DELETE. Triển khai policies cho user profiles, company profiles, products, inventory, orders. Thiết lập security definer functions cho complex business logic. Tạo helper functions để check user permissions. Test policies với different user contexts.",
+        "testStrategy": "Kiểm tra từng role chỉ có thể truy cập data phù hợp với permissions. Test unauthorized access bị block. Verify performance impact của RLS policies không ảnh hưởng đáng kể đến queries.",
+        "priority": "high",
+        "dependencies": [3],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Tạo RLS policies cho Super Admin role",
+            "description": "Thiết lập RLS policies cho Super Admin có full access đến tất cả tables và operations",
+            "dependencies": [],
+            "details": "Tạo policies cho Super Admin có thể SELECT, INSERT, UPDATE, DELETE trên tất cả tables: profiles, company_profiles, products, inventory, orders, categories. Super Admin bypass hầu hết restrictions và có thể manage tất cả data trong system. Thiết lập security definer functions cho admin operations.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Tạo RLS policies cho Nursery Manager role",
+            "description": "Thiết lập RLS policies cho Nursery Manager quản lý data trong company của mình",
+            "dependencies": [1],
+            "details": "Tạo policies cho Nursery Manager có thể SELECT, INSERT, UPDATE, DELETE trên data thuộc company_id của mình. Bao gồm products, inventory, orders, employee profiles. Không thể truy cập data của companies khác. Thiết lập helper functions để check company ownership.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Tạo RLS policies cho Sales Staff role",
+            "description": "Thiết lập RLS policies cho Sales Staff xử lý orders và customer management",
+            "dependencies": [2],
+            "details": "Tạo policies cho Sales Staff có thể SELECT products/inventory, SELECT/INSERT/UPDATE orders và customer profiles thuộc company. Không thể DELETE orders hoặc modify sensitive data. Chỉ có thể xem orders được assign hoặc thuộc company của mình.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Tạo RLS policies cho Customer roles (Wholesale/Retail)",
+            "description": "Thiết lập RLS policies cho Wholesale và Retail customers với permissions khác nhau",
+            "dependencies": [3],
+            "details": "Tạo policies cho Wholesale customers có thể SELECT products với wholesale pricing, INSERT/UPDATE/SELECT own orders. Retail customers chỉ có thể SELECT products với retail pricing và manage own orders. Customers không thể truy cập data của customers khác hoặc internal company data.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Tạo RLS policies cho Worker role",
+            "description": "Thiết lập RLS policies cho Workers xử lý inventory và production tasks",
+            "dependencies": [4],
+            "details": "Tạo policies cho Workers có thể SELECT/UPDATE inventory stock, SELECT products và production-related data thuộc company. Không thể truy cập orders, customer data hoặc financial information. Chỉ có thể update inventory và production status.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Tạo RLS policies cho Content Editor role",
+            "description": "Thiết lập RLS policies cho Content Editors quản lý product information và content",
+            "dependencies": [5],
+            "details": "Tạo policies cho Content Editors có thể SELECT/INSERT/UPDATE/DELETE products, categories, và product-related content thuộc company. Không thể truy cập orders, customer data hoặc inventory levels. Có thể manage product descriptions, images, categories.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Tạo comprehensive test suite cho RLS policies validation",
+            "description": "Thiết lập test suite để validate tất cả RLS policies hoạt động chính xác và không có security holes",
+            "dependencies": [1, 2, 3, 4, 5, 6],
+            "details": "Tạo test cases cho từng role và từng table combination. Test unauthorized access bị block properly. Verify performance impact của RLS policies. Tạo test users với different roles và test cross-role access restrictions. Thiết lập automated tests để detect policy regressions.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Tạo TypeScript types từ database schema",
+        "description": "Generate TypeScript types và interfaces từ Supabase schema cho type safety",
+        "details": "Sử dụng supabase gen types để generate TypeScript types từ database schema. Tạo custom types cho business logic trong types/database.ts. Thiết lập type helpers cho common operations như user profiles, product variants, order items. Tạo Zod schemas cho form validation và API request validation. Thiết lập type guards cho runtime type checking. Cấu hình TypeScript paths để import types dễ dàng.",
+        "testStrategy": "Kiểm tra TypeScript compilation không có lỗi, generated types accurate với database schema. Test type safety trong components và API routes. Verify Zod schemas validate data correctly.",
+        "priority": "medium",
+        "dependencies": [4],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Generate base types từ Supabase schema",
+            "description": "Sử dụng supabase gen types để tạo TypeScript types từ database schema",
+            "dependencies": [],
+            "details": "Cài đặt Supabase CLI và chạy `supabase gen types typescript` để generate types từ database schema. Tạo file types/supabase.ts chứa generated types. Cấu hình script trong package.json để regenerate types khi schema thay đổi. Verify generated types chính xác với database structure.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Tạo custom business logic types",
+            "description": "Xây dựng custom types cho business logic specific của nursery application",
+            "dependencies": [1],
+            "details": "Tạo file types/database.ts với custom types cho user profiles, product variants, order items, và business-specific entities. Extend generated Supabase types với additional properties. Tạo union types cho user roles, order statuses, product categories. Thiết lập enum types cho constants như payment methods, shipping options.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Thiết lập Zod schemas cho validation",
+            "description": "Tạo Zod schemas để validate form data và API requests",
+            "dependencies": [2],
+            "details": "Cài đặt Zod và tạo file lib/validations.ts. Tạo schemas cho user registration, login, product creation, order processing. Thiết lập schemas cho different user roles với conditional validation. Tạo reusable validation helpers cho common patterns như email, password, phone number. Integrate schemas với form libraries.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Tạo type helpers và guards",
+            "description": "Xây dựng type helpers và runtime type guards cho type safety",
+            "dependencies": [3],
+            "details": "Tạo file lib/type-helpers.ts với utility functions cho type checking. Implement type guards để verify user roles, product types, order statuses at runtime. Tạo helper functions cho common type operations như filtering, mapping, transforming data. Thiết lập type predicates cho conditional logic.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Cấu hình TypeScript paths",
+            "description": "Thiết lập TypeScript path mapping để import types dễ dàng",
+            "dependencies": [4],
+            "details": "Cấu hình tsconfig.json với path mapping cho @/types/*, @/lib/*, @/components/*. Tạo central export file types/index.ts để export all types. Thiết lập absolute imports cho type files. Verify TypeScript compilation không có lỗi và IDE support hoạt động đúng với path mapping.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Triển khai hệ thống authentication với 7 roles",
+        "description": "Xây dựng authentication system hỗ trợ 7 vai trò khác nhau với registration và login flows",
+        "details": "Thiết lập Supabase Auth với email/password và OAuth (Google, Facebook). Tạo registration form với role selection cho different user types. Triển khai profile creation workflow cho B2B customers với company approval process. Xây dựng login flow với role-based dashboard redirection. Tạo password reset và email verification flows. Thiết lập session management với automatic token refresh. Tạo authentication middleware cho protected routes.",
+        "testStrategy": "Test registration và login cho tất cả 7 roles. Kiểm tra OAuth flows hoạt động đúng. Verify password reset và email verification. Test session management và automatic logout khi expired.",
+        "priority": "high",
+        "dependencies": [5],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Xây dựng core API infrastructure",
+        "description": "Tạo RESTful API endpoints cho user management, authentication và basic operations",
+        "details": "Tạo API routes trong app/api/ folder theo REST conventions. Triển khai authentication APIs: /api/auth/login, /api/auth/register, /api/auth/logout, /api/auth/reset-password. Xây dựng user management APIs: /api/users, /api/profiles, /api/roles. Tạo product catalog APIs: /api/products, /api/categories, /api/variants. Triển khai error handling middleware với consistent error responses. Thiết lập request validation với Zod schemas. Tạo API documentation với OpenAPI/Swagger.",
+        "testStrategy": "Test tất cả API endpoints với different HTTP methods. Kiểm tra error handling và validation responses. Verify authentication protection hoạt động đúng. Test API documentation accuracy.",
+        "priority": "high",
+        "dependencies": [6],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Tạo UI components library với shadcn/ui",
+        "description": "Thiết lập component library với shadcn/ui để đảm bảo consistency và reusability",
+        "details": "Cài đặt và cấu hình shadcn/ui với Tailwind CSS 4.0. Tạo base components: Button, Input, Card, Table, Form, Dialog, Toast. Thiết lập theme configuration với color palette phù hợp với nursery business. Tạo composite components cho authentication forms, product cards, user profiles. Triển khai responsive design patterns. Tạo component documentation với Storybook hoặc tương tự.",
+        "testStrategy": "Kiểm tra components render correctly trên different screen sizes. Test accessibility standards (WCAG). Verify component reusability và consistency. Test theme customization hoạt động đúng.",
+        "priority": "medium",
+        "dependencies": [1],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "Triển khai role-based dashboard và navigation",
+        "description": "Xây dựng dashboard interfaces cho từng role với navigation phù hợp",
+        "details": "Tạo dashboard layouts cho 7 roles với navigation menu phù hợp với permissions. Triển khai role-based routing và component guards. Xây dựng Super Admin dashboard với system overview, user management, system configuration. Tạo Nursery Manager dashboard với production metrics, inventory overview. Thiết lập Sales Staff dashboard với customer management, order tracking. Tạo generic dashboard components có thể reuse cho different roles.",
+        "testStrategy": "Test dashboard redirection sau login cho từng role. Kiểm tra navigation menu hiển thị đúng features theo permissions. Verify component guards block unauthorized access. Test responsive layout trên mobile devices.",
+        "priority": "medium",
+        "dependencies": [7, 8],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "title": "Thiết lập testing infrastructure và deployment",
+        "description": "Cấu hình testing framework và deployment pipeline cho production readiness",
+        "details": "Thiết lập Jest và React Testing Library cho unit testing. Cấu hình Playwright cho end-to-end testing của authentication flows và critical user journeys. Tạo test utilities cho database setup và teardown. Triển khai CI/CD pipeline với GitHub Actions. Cấu hình Vercel deployment với preview environments. Thiết lập monitoring và error tracking với Sentry. Tạo performance benchmarks cho critical operations.",
+        "testStrategy": "Kiểm tra >80% code coverage cho critical functions. Test E2E workflows cho tất cả user roles. Verify deployment pipeline hoạt động đúng. Test production environment với real data scenarios.",
+        "priority": "medium",
+        "dependencies": [9],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-07-15T15:40:43.656Z",
+      "updated": "2025-07-15T23:47:47.785Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

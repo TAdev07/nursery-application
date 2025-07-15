@@ -1,0 +1,206 @@
+<context>
+# Overview
+Phase 1 establishes the complete foundation for a modern nursery management system using Next.js 15 and Supabase. This phase focuses on setting up the development environment, implementing a robust database schema, creating a secure 7-role authentication system, and building core API infrastructure. The goal is to create a solid technical foundation that all subsequent features will build upon.
+
+# Core Features
+**Development Environment Setup**
+- Complete Next.js 15 project with TypeScript, Tailwind CSS, and modern tooling
+- VSCode workspace with essential extensions and development workflow
+- Package management with proper scripts and dependency organization
+- Git workflow with conventional commits and code quality tools
+
+**Database Schema & Supabase Integration**
+- Comprehensive 31-table database schema designed for nursery business operations
+- User management tables supporting B2B and B2C customer types
+- Product catalog tables with plant-specific attributes and hierarchical categories
+- Inventory management tables with multi-location support and real-time tracking
+- Order system tables supporting both retail and wholesale business models
+- Row Level Security policies ensuring data protection and role-based access
+
+**7-Role Authentication System**
+- Super Admin: Complete system control and configuration
+- Nursery Manager: Production and operations management
+- Sales Staff: Customer relationship and sales management
+- Nursery Worker: Daily operational tasks and inventory updates
+- Wholesale Customer: B2B purchasing with special pricing and credit terms
+- Retail Customer: Individual consumer shopping experience
+- Content Editor: Marketing content and product information management
+
+**Core API Infrastructure**
+- RESTful API endpoints following modern conventions
+- Authentication APIs with session management and password reset
+- User management APIs supporting profile creation and role assignment
+- Product catalog APIs for CRUD operations on products, categories, and variants
+- TypeScript type generation from database schema
+- Error handling middleware and request validation
+
+# User Experience
+**Developer Experience**
+- Modern development environment with hot reload and type safety
+- Comprehensive TypeScript coverage with auto-generated database types
+- Efficient debugging tools and error handling
+- Automated testing setup for continuous quality assurance
+
+**Authentication Flow**
+- Simple email/password registration with role selection
+- OAuth integration for Google and Facebook login
+- Company profile creation for B2B customers with approval workflow
+- Role-based dashboard redirection after successful authentication
+- Password reset and email verification flows
+
+**Admin Experience**
+- Intuitive user management interface with role assignment capabilities
+- Product catalog management with plant-specific attribute handling
+- System monitoring dashboard with key metrics and health indicators
+- Bulk operations for efficient data management
+</context>
+
+<PRD>
+# Technical Architecture
+
+**Frontend Architecture**
+- Next.js 15 with App Router for optimal performance and SEO
+- React 19 with Server Components for efficient rendering
+- TypeScript for type safety and developer experience
+- Tailwind CSS 4.0 for consistent and maintainable styling
+- shadcn/ui components for professional UI consistency
+
+**Backend Architecture**
+- Supabase as Backend-as-a-Service providing PostgreSQL database, authentication, and real-time features
+- Row Level Security for granular data access control
+- Database triggers for automated business logic
+- Edge functions for complex server-side operations
+- Real-time subscriptions for live inventory updates
+
+**Data Models**
+Core entities include:
+- auth.users (Supabase managed authentication)
+- profiles (extended user information with role assignments)
+- company_profiles (B2B customer business information)
+- roles and user_roles (flexible role-based access control)
+- categories (hierarchical product organization)
+- products (plant catalog with botanical attributes)
+- product_variants (size and container combinations)
+- inventory_locations and inventory_stock (multi-location inventory)
+- orders and order_items (sales transaction management)
+
+**Security Model**
+- Authentication handled by Supabase Auth with JWT tokens
+- Role-based access control through RLS policies
+- API route protection with middleware
+- Frontend component guards based on user permissions
+- Secure session management with automatic token refresh
+
+**Performance Considerations**
+- Database indexing strategy for optimal query performance
+- Image optimization with Next.js Image component
+- Code splitting for efficient bundle loading
+- Caching strategy for frequently accessed data
+
+# Development Roadmap
+
+**Sprint 1-2: Project Setup & Environment (Weeks 1-2)**
+Foundation setup with all development tools, project structure, and initial configuration. This creates the workspace where all development will occur.
+
+**Sprint 3-4: Database Schema & Supabase (Weeks 3-4)**
+Complete database implementation with all tables, relationships, indexes, and security policies. This establishes the data layer that all features depend on.
+
+**Sprint 5-6: Authentication System (Weeks 5-6)**
+Implement the 7-role authentication system with user registration, login, role assignment, and permission checking. This enables user access control for all subsequent features.
+
+**Sprint 7-8: Core API Infrastructure (Weeks 7-8)**
+Build essential API endpoints for user management, authentication, and basic product operations. This provides the communication layer between frontend and backend.
+
+Each sprint builds directly on the previous one, creating a solid foundation for Phase 2 development.
+
+# Logical Dependency Chain
+
+**Critical Path Dependencies:**
+1. **Project Setup** must complete first as it establishes the development environment
+2. **Database Schema** must be implemented before any data-dependent features
+3. **Authentication System** is required before implementing any protected functionality
+4. **API Infrastructure** depends on both database and authentication being complete
+
+**Parallel Development Opportunities:**
+- Frontend component library can be developed alongside backend API implementation
+- Database optimization can occur in parallel with API development
+- Testing infrastructure can be set up throughout all phases
+
+**Quick Win Strategy:**
+- Week 2: Working Next.js application with basic routing
+- Week 4: Database with sample data accessible via Supabase dashboard
+- Week 6: Working login/logout with role-based dashboard redirection
+- Week 8: Complete API endpoints ready for frontend integration
+
+**Foundation for Future Phases:**
+- Authentication system supports all user types needed for B2B and B2C features
+- Database schema accommodates all planned inventory and order management features
+- API architecture scales to support advanced search, real-time updates, and bulk operations
+- Security model handles all planned business scenarios
+
+# Risks and Mitigations
+
+**Technical Risks:**
+- **Database Performance with Large Datasets**
+  Risk: Query performance degradation as product catalog grows
+  Mitigation: Implement proper indexing strategy from day one, plan for query optimization
+  
+- **Supabase Service Reliability**
+  Risk: Dependency on third-party service for critical functionality
+  Mitigation: Implement proper error handling, consider backup strategies, monitor service status
+  
+- **Complex Role-Based Permissions**
+  Risk: Permission system becomes too complex to maintain
+  Mitigation: Start with clear permission matrix, implement comprehensive testing, document all permission rules
+
+**Development Risks:**
+- **Scope Creep in Foundation Phase**
+  Risk: Adding features that belong in later phases
+  Mitigation: Strict adherence to Phase 1 scope, defer advanced features to appropriate phases
+  
+- **Authentication Complexity**
+  Risk: Over-engineering the authentication system
+  Mitigation: Start with Supabase Auth defaults, add complexity only as needed
+
+**MVP Definition:**
+Phase 1 MVP is a working application where:
+- Developers can run the application locally with full development environment
+- Users can register, login, and access role-appropriate dashboards
+- Database contains all necessary tables with proper relationships and security
+- Basic API endpoints are functional and properly typed
+- System is ready for Phase 2 feature development
+
+**Success Criteria:**
+- All 7 user roles can successfully register and access appropriate areas
+- Database schema supports all planned business operations
+- Development environment enables efficient Phase 2 development
+- Security audit shows no critical vulnerabilities
+- Performance benchmarks meet targets for foundation load
+
+# Appendix
+
+**Research Findings:**
+- Supabase provides sufficient functionality for nursery business requirements
+- Next.js 15 App Router offers optimal performance for catalog-heavy applications
+- 7-role system covers all identified user types in nursery business model
+- PostgreSQL handles plant-specific attributes efficiently with JSONB columns
+
+**Technical Specifications:**
+- Node.js 20+ required for Next.js 15 compatibility
+- PostgreSQL 15+ for advanced database features
+- Minimum 8GB RAM for development environment
+- VSCode with TypeScript and Tailwind extensions recommended
+
+**Integration Requirements:**
+- Supabase project with PostgreSQL database
+- Vercel deployment pipeline for staging and production
+- Email service for authentication workflows
+- CDN for static asset delivery
+
+**Quality Gates:**
+- TypeScript compilation with no errors
+- All RLS policies tested and verified
+- Authentication flows tested for all user roles
+- API endpoints documented and tested
+- Code coverage >80% for critical functions
+</PRD>

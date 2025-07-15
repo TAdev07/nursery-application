@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(task-master:*)",
+      "Bash(find:*)",
+      "Bash(npm install:*)",
+      "Bash(npx husky:*)",
+      "Bash(ls:*)",
+      "Bash(chmod:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm run type-check:*)"
+    ],
+    "deny": []
+  }
+}
