@@ -1,0 +1,231 @@
+erDiagram
+    %% ============ AUTHENTICATION & USER MANAGEMENT ============
+    auth_users {
+        uuid id PK
+        string email
+        string encrypted_password
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    profiles {
+        uuid id PK, FK
+        string email
+        string first_name
+        string last_name
+        string phone
+        string avatar_url
+        string user_type
+        string role
+        string status
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    company_profiles {
+        uuid id PK
+        uuid user_id FK
+        string company_name
+        string business_registration
+        string tax_number
+        decimal credit_limit
+        integer payment_terms
+        string discount_tier
+        string approval_status
+        timestamp created_at
+    }
+
+    roles {
+        uuid id PK
+        string name
+        string display_name
+        string description
+        jsonb permissions
+        boolean is_system_role
+        timestamp created_at
+    }
+
+    user_roles {
+        uuid id PK
+        uuid user_id FK
+        uuid role_id FK
+        uuid granted_by FK
+        timestamp granted_at
+        timestamp expires_at
+        boolean is_active
+    }
+
+    %% ============ PRODUCT CATALOG ============
+    categories {
+        uuid id PK
+        string name
+        string slug
+        text description
+        uuid parent_id FK
+        string image_url
+        boolean is_active
+        integer sort_order
+        timestamp created_at
+    }
+
+    products {
+        uuid id PK
+        string sku
+        string name
+        string slug
+        text description
+        uuid category_id FK "REFERENCES categories(id)"
+        string botanical_name
+        string plant_type
+        integer mature_height_max
+        string growth_rate
+        string_array sun_requirements
+        string water_needs
+        integer_array hardiness_zones
+        text care_instructions
+        decimal base_price
+        decimal wholesale_price
+        boolean is_active
+        boolean is_featured
+        timestamp created_at
+    }
+
+    product_variants {
+        uuid id PK
+        uuid product_id FK
+        string variant_name
+        string sku
+        string size_category
+        string container_type
+        string container_size
+        decimal price_adjustment
+        boolean is_active
+    }
+
+    product_images {
+        uuid id PK
+        uuid product_id FK
+        string image_url
+        string alt_text
+        integer display_order
+        boolean is_primary
+        timestamp created_at
+    }
+
+    %% ============ INVENTORY MANAGEMENT ============
+    inventory_locations {
+        uuid id PK
+        string code
+        string name
+        string location_type
+        text description
+        jsonb metadata
+        boolean is_active
+    }
+
+    inventory_stock {
+        uuid id PK
+        uuid product_variant_id FK
+        uuid location_id FK
+        integer quantity_available
+        integer quantity_reserved
+        integer reorder_point
+        string quality_grade
+        jsonb plant_health_data
+        timestamp last_updated
+    }
+
+    stock_movements {
+        uuid id PK
+        uuid product_variant_id FK
+        uuid location_id FK
+        string movement_type
+        integer quantity
+        text reason
+        uuid reference_id
+        uuid user_id FK
+        jsonb metadata
+        timestamp created_at
+    }
+
+    %% ============ ORDER SYSTEM ============
+    orders {
+        uuid id PK
+        string order_number
+        uuid user_id FK
+        string status
+        decimal subtotal
+        decimal tax_amount
+        decimal shipping_amount
+        decimal total_amount
+        string purchase_order_number
+        integer payment_terms
+        jsonb shipping_address
+        jsonb billing_address
+        text notes
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    order_items {
+        uuid id PK
+        uuid order_id FK
+        uuid product_variant_id FK
+        integer quantity
+        decimal unit_price
+        decimal total_price
+        text notes
+    }
+
+    %% ============ PRICING & BUSINESS ============
+    pricing_tiers {
+        uuid id PK
+        string tier_name
+        string customer_type
+        decimal discount_percentage
+        integer min_quantity
+        jsonb conditions
+        boolean is_active
+    }
+
+    %% ============ SEASONAL & PLANNING ============
+    seasonal_availability {
+        uuid id PK
+        uuid product_id FK
+        string season
+        boolean is_available
+        string planting_season
+        string bloom_season
+        text seasonal_notes
+    }
+
+    %% ============ RELATIONSHIPS ============
+
+    %% User Management Relations
+    auth_users ||--|| profiles : "extends"
+    profiles ||--o| company_profiles : "has company profile"
+    profiles ||--o{ user_roles : "assigned roles"
+    roles ||--o{ user_roles : "role assignments"
+    profiles ||--o{ user_roles : "granted by"
+
+    %% Product Catalog Relations
+    categories ||--o{ categories : "parent-child"
+    categories ||--o{ products : "contains"
+    products ||--o{ product_variants : "has variants"
+    products ||--o{ product_images : "has images"
+    products ||--o{ seasonal_availability : "seasonal data"
+
+    %% Inventory Relations
+    product_variants ||--o{ inventory_stock : "stock tracking"
+    inventory_locations ||--o{ inventory_stock : "location stock"
+    product_variants ||--o{ stock_movements : "movement history"
+    inventory_locations ||--o{ stock_movements : "location movements"
+    profiles ||--o{ stock_movements : "performed by"
+
+    %% Order Relations
+    profiles ||--o{ orders : "customer orders"
+    orders ||--o{ order_items : "order details"
+    product_variants ||--o{ order_items : "ordered variants"
+
+    %% Business Relations
+    pricing_tiers ||--o{ profiles : "customer pricing"
