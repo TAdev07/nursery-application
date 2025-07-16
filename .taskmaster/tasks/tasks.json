@@ -75,15 +75,15 @@
         "testStrategy": "Kiểm tra kết nối Supabase thành công, có thể truy cập database từ Next.js app, authentication helpers hoạt động đúng. Test basic CRUD operations với Supabase client.",
         "priority": "high",
         "dependencies": [1],
-        "status": "pending",
+        "status": "done",
         "subtasks": [
           {
             "id": 1,
             "title": "Tạo Supabase project và cấu hình credentials",
-            "description": "Khởi tạo Supabase project mới với PostgreSQL database và thiết lập các credentials cần thiết",
+            "description": "Khởi tạo Supabase project mới với PostgreSQL database và thiết lập các credentials cần thiết [Updated: 7/16/2025]",
             "dependencies": [],
-            "details": "Đăng ký/đăng nhập Supabase dashboard, tạo project mới với region phù hợp. Thiết lập PostgreSQL database với basic configuration. Lấy project URL và anon key từ Settings > API. Tạo service role key cho server-side operations. Cấu hình RLS (Row Level Security) policies cơ bản.",
-            "status": "pending",
+            "details": "Đăng ký/đăng nhập Supabase dashboard, tạo project mới với region phù hợp. Thiết lập PostgreSQL database với basic configuration. Lấy project URL và anon key từ Settings > API. Tạo service role key cho server-side operations. Cấu hình RLS (Row Level Security) policies cơ bản.\n<info added on 2025-07-16T02:07:11.479Z>\nBỏ qua bước này - credentials đã được người dùng cung cấp sẵn trong file .env.local\n</info added on 2025-07-16T02:07:11.479Z>",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -92,7 +92,7 @@
             "description": "Cài đặt các package Supabase cần thiết và cấu hình dependencies",
             "dependencies": [1],
             "details": "Cài đặt @supabase/supabase-js, @supabase/auth-helpers-nextjs, @supabase/auth-helpers-react. Cập nhật package.json với các dependencies version tương thích với Next.js 15. Cấu hình TypeScript types cho Supabase client. Thiết lập import paths và module resolution.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -101,7 +101,7 @@
             "description": "Tạo Supabase client configuration cho server và client side",
             "dependencies": [2],
             "details": "Tạo lib/supabase.ts với createClient cho client-side operations. Tạo lib/supabase-server.ts cho server-side operations với service role. Cấu hình environment variables: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY. Thiết lập TypeScript interfaces cho database schema.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -110,7 +110,7 @@
             "description": "Thiết lập middleware.ts để xử lý authentication và route protection",
             "dependencies": [3],
             "details": "Tạo middleware.ts trong root directory với auth helpers. Cấu hình route protection cho protected pages. Thiết lập token refresh mechanism. Xử lý redirect logic cho authenticated/unauthenticated users. Cấu hình matcher patterns cho middleware.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -119,7 +119,7 @@
             "description": "Cài đặt Supabase CLI và kiểm tra kết nối database",
             "dependencies": [4],
             "details": "Cài đặt Supabase CLI globally hoặc trong project. Cấu hình supabase init và link với remote project. Tạo migration files cơ bản. Test kết nối database với basic CRUD operations. Verify authentication helpers hoạt động đúng với test user. Kiểm tra environment variables được load correctly.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           }
         ]
@@ -132,7 +132,7 @@
         "testStrategy": "Kiểm tra tất cả tables được tạo thành công, foreign key constraints hoạt động đúng, indexes cải thiện query performance. Test hierarchical categories và JSONB operations. Verify triggers thực thi đúng business logic.",
         "priority": "high",
         "dependencies": [2],
-        "status": "pending",
+        "status": "done",
         "subtasks": [
           {
             "id": 1,
@@ -140,7 +140,7 @@
             "description": "Tạo migration files cho các bảng cốt lõi: profiles, company_profiles, roles, user_roles",
             "dependencies": [],
             "details": "Thiết lập các bảng cơ bản cho hệ thống người dùng và vai trò. Bao gồm: profiles table cho thông tin cá nhân, company_profiles cho thông tin công ty, roles table cho các vai trò hệ thống, user_roles table cho mapping user và role. Thiết lập foreign key constraints và indexes cần thiết.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -149,7 +149,7 @@
             "description": "Tạo migration files cho hệ thống danh mục sản phẩm: categories, products, product_variants",
             "dependencies": [1],
             "details": "Thiết lập tables cho danh mục sản phẩm với hierarchical categories (parent-child relationships), products table với JSONB columns cho plant-specific attributes, product_variants table cho các biến thể sản phẩm. Thiết lập indexes để tối ưu query performance.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -158,7 +158,7 @@
             "description": "Tạo migration files cho quản lý kho: inventory_locations, inventory_stock",
             "dependencies": [2],
             "details": "Thiết lập inventory_locations table cho các vị trí kho, inventory_stock table để tracking số lượng tồn kho theo từng sản phẩm và vị trí. Thiết lập foreign key constraints liên kết với product tables và constraints để đảm bảo data integrity.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -167,7 +167,7 @@
             "description": "Tạo migration files cho hệ thống đơn hàng: orders, order_items",
             "dependencies": [3],
             "details": "Thiết lập orders table cho thông tin đơn hàng, order_items table cho chi tiết sản phẩm trong đơn hàng. Thiết lập foreign key constraints liên kết với user profiles và product tables. Thêm indexes để tối ưu query performance cho việc tra cứu đơn hàng.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -176,7 +176,7 @@
             "description": "Tạo migration files cho các bảng hỗ trợ khác: notifications, audit_logs, settings",
             "dependencies": [4],
             "details": "Thiết lập các bảng hỗ trợ như notifications cho thông báo hệ thống, audit_logs cho tracking các thay đổi, settings cho cấu hình hệ thống. Thiết lập foreign key constraints và indexes phù hợp.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -185,7 +185,7 @@
             "description": "Tạo indexes và constraints cho tất cả tables để tối ưu performance",
             "dependencies": [5],
             "details": "Thiết lập composite indexes cho các query thường dùng, unique constraints cho các fields cần thiết, check constraints cho data validation. Tạo indexes cho JSONB columns và text search. Optimize indexes cho hierarchical categories queries.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -194,7 +194,7 @@
             "description": "Thiết lập triggers cho automated business logic như inventory updates và order calculations",
             "dependencies": [6],
             "details": "Tạo triggers cho tự động cập nhật inventory khi có order mới, triggers cho tính toán tổng tiền đơn hàng, triggers cho audit logging. Thiết lập triggers cho cập nhật timestamps và data validation. Test triggers hoạt động đúng với business rules.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -203,7 +203,7 @@
             "description": "Thực thi tất cả migration files và kiểm tra database schema hoạt động đúng",
             "dependencies": [7],
             "details": "Chạy tất cả migration files theo đúng thứ tự, verify tất cả tables được tạo thành công, foreign key constraints hoạt động đúng. Test hierarchical categories queries, JSONB operations, và trigger functionality. Kiểm tra indexes cải thiện query performance.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           }
         ]
@@ -398,7 +398,7 @@
     ],
     "metadata": {
       "created": "2025-07-15T15:40:43.656Z",
-      "updated": "2025-07-15T23:47:47.785Z",
+      "updated": "2025-07-16T02:47:57.479Z",
       "description": "Tasks for master context"
     }
   }

@@ -105,27 +105,27 @@ Task Master provides an MCP server that Claude Code can connect to. Configure in
 ### Essential MCP Tools
 
 ```javascript
-help; // = shows available taskmaster commands
+help // = shows available taskmaster commands
 // Project setup
-initialize_project; // = task-master init
-parse_prd; // = task-master parse-prd
+initialize_project // = task-master init
+parse_prd // = task-master parse-prd
 
 // Daily workflow
-get_tasks; // = task-master list
-next_task; // = task-master next
-get_task; // = task-master show <id>
-set_task_status; // = task-master set-status
+get_tasks // = task-master list
+next_task // = task-master next
+get_task // = task-master show <id>
+set_task_status // = task-master set-status
 
 // Task management
-add_task; // = task-master add-task
-expand_task; // = task-master expand
-update_task; // = task-master update-task
-update_subtask; // = task-master update-subtask
-update; // = task-master update
+add_task // = task-master add-task
+expand_task // = task-master expand
+update_task // = task-master update-task
+update_subtask // = task-master update-subtask
+update // = task-master update
 
 // Analysis
-analyze_project_complexity; // = task-master analyze-complexity
-complexity_report; // = task-master complexity-report
+analyze_project_complexity // = task-master analyze-complexity
+complexity_report // = task-master complexity-report
 ```
 
 ## Claude Code Workflow Integration
@@ -371,6 +371,12 @@ task-master fix-dependencies
 DO NOT RE-INITIALIZE. That will not do anything beyond re-adding the same Taskmaster core files.
 
 ## Important Notes
+
+## Language Preference
+
+- **Output Language**: Vietnamese (Tiếng Việt)
+- All responses should be in Vietnamese unless specifically requested otherwise
+- Technical terms can remain in English when appropriate for
 
 ### AI-Powered Operations
 
