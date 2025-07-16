@@ -372,6 +372,9 @@ DO NOT RE-INITIALIZE. That will not do anything beyond re-adding the same Taskma
 
 ## Important Notes
 
+- ✅ Không thêm thông tin AI attribution vào commit messages
+- ✅ Sử dụng commit message thuần của developer
+
 ## Language Preference
 
 - **Output Language**: Vietnamese (Tiếng Việt)

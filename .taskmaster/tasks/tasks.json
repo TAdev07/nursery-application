@@ -216,7 +216,7 @@
         "testStrategy": "Kiểm tra từng role chỉ có thể truy cập data phù hợp với permissions. Test unauthorized access bị block. Verify performance impact của RLS policies không ảnh hưởng đáng kể đến queries.",
         "priority": "high",
         "dependencies": [3],
-        "status": "pending",
+        "status": "done",
         "subtasks": [
           {
             "id": 1,
@@ -224,7 +224,7 @@
             "description": "Thiết lập RLS policies cho Super Admin có full access đến tất cả tables và operations",
             "dependencies": [],
             "details": "Tạo policies cho Super Admin có thể SELECT, INSERT, UPDATE, DELETE trên tất cả tables: profiles, company_profiles, products, inventory, orders, categories. Super Admin bypass hầu hết restrictions và có thể manage tất cả data trong system. Thiết lập security definer functions cho admin operations.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -233,7 +233,7 @@
             "description": "Thiết lập RLS policies cho Nursery Manager quản lý data trong company của mình",
             "dependencies": [1],
             "details": "Tạo policies cho Nursery Manager có thể SELECT, INSERT, UPDATE, DELETE trên data thuộc company_id của mình. Bao gồm products, inventory, orders, employee profiles. Không thể truy cập data của companies khác. Thiết lập helper functions để check company ownership.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -242,7 +242,7 @@
             "description": "Thiết lập RLS policies cho Sales Staff xử lý orders và customer management",
             "dependencies": [2],
             "details": "Tạo policies cho Sales Staff có thể SELECT products/inventory, SELECT/INSERT/UPDATE orders và customer profiles thuộc company. Không thể DELETE orders hoặc modify sensitive data. Chỉ có thể xem orders được assign hoặc thuộc company của mình.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -251,7 +251,7 @@
             "description": "Thiết lập RLS policies cho Wholesale và Retail customers với permissions khác nhau",
             "dependencies": [3],
             "details": "Tạo policies cho Wholesale customers có thể SELECT products với wholesale pricing, INSERT/UPDATE/SELECT own orders. Retail customers chỉ có thể SELECT products với retail pricing và manage own orders. Customers không thể truy cập data của customers khác hoặc internal company data.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -260,7 +260,7 @@
             "description": "Thiết lập RLS policies cho Workers xử lý inventory và production tasks",
             "dependencies": [4],
             "details": "Tạo policies cho Workers có thể SELECT/UPDATE inventory stock, SELECT products và production-related data thuộc company. Không thể truy cập orders, customer data hoặc financial information. Chỉ có thể update inventory và production status.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -269,7 +269,7 @@
             "description": "Thiết lập RLS policies cho Content Editors quản lý product information và content",
             "dependencies": [5],
             "details": "Tạo policies cho Content Editors có thể SELECT/INSERT/UPDATE/DELETE products, categories, và product-related content thuộc company. Không thể truy cập orders, customer data hoặc inventory levels. Có thể manage product descriptions, images, categories.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -278,7 +278,7 @@
             "description": "Thiết lập test suite để validate tất cả RLS policies hoạt động chính xác và không có security holes",
             "dependencies": [1, 2, 3, 4, 5, 6],
             "details": "Tạo test cases cho từng role và từng table combination. Test unauthorized access bị block properly. Verify performance impact của RLS policies. Tạo test users với different roles và test cross-role access restrictions. Thiết lập automated tests để detect policy regressions.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": ""
           }
         ]
@@ -398,7 +398,7 @@
     ],
     "metadata": {
       "created": "2025-07-15T15:40:43.656Z",
-      "updated": "2025-07-16T02:47:57.479Z",
+      "updated": "2025-07-16T06:24:51.210Z",
       "description": "Tasks for master context"
     }
   }
